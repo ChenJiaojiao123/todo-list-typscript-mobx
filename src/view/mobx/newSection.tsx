@@ -4,7 +4,9 @@ import { observer, inject } from 'mobx-react';
 import { TodoStore } from '../../store/index';
 
 import Input from './Input';
-import NewRadio from './newRadio';
+import Radio from '@/componentes/Radio/index';
+
+console.log(Radio);
 
 interface IAppProps {
 	// todoStore: TodoStore;
@@ -92,7 +94,7 @@ export default class NewSection extends React.Component<{}, ISectionState> {
 			return (
 				//数组或迭代器内每个子元素都必须有 prop 属性："key"。
 				<li className="todos__li" key={index}>
-					<NewRadio
+					<Radio
 						id={item.id}
 						name={item.listValue}
 						checked={item.selected}

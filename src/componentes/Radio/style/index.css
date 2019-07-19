@@ -1,0 +1,22 @@
+
+.form__item {
+  width: 40px;
+  -webkit-appearance: none;
+  appearance: none;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form__item-cb {
+  font-size: 20px;
+  color: #d9d9d9;
+  text-shadow: 0 -1px 0 #bfbfbf;
+}
+
+.form__item-cb.active {
+  color: #85ada7;
+  text-shadow: 0 1px 0 #669991;
+}
