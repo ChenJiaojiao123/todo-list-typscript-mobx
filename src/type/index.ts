@@ -1,9 +1,4 @@
-
-interface Item {
-
-}
-
-
+  
 export interface IItem {
   id: number;
   listValue: string;
@@ -13,3 +8,9 @@ export interface IItem {
 }
 
 export type TList = IItem[];
+
+export interface IPressParams {
+  value: string;
+  id?: number;
+  cacheValue?: string;
+}

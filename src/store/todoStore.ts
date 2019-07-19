@@ -1,4 +1,4 @@
-import { observable, computed, autorun, action, reaction } from 'mobx';
+import { observable, computed, action, reaction } from 'mobx';
 import {} from 'mobx-react';
 import { toJS } from 'mobx';
 import { TList, IItem } from '../type/';
@@ -39,17 +39,17 @@ class TodoStore {
 		const {filterValue,list,unfinishedList,finishedList} = this;
 		let tempList: TList= []; 
 
-		console.log("filterValue1: ", filterValue);
+		//console.log("filterValue1: ", filterValue);
 
 		if(filterValue === "unfinished" ){
 			 tempList = unfinishedList;
-			 console.log("filterValue2: ", tempList);
+			 //console.log("filterValue2: ", tempList);
 		} else if(filterValue === "finished" ){
 			 tempList = finishedList;
-			 console.log("filterValue3: ", tempList);
+			// console.log("filterValue3: ", tempList);
 		} else {
 			 tempList = list;
-			 console.log("filterValue4: ", tempList);
+			 //console.log("filterValue4: ", tempList);
 		}
 		return tempList;
 	}
@@ -100,16 +100,17 @@ class TodoStore {
 		tempList[index].selected = !select;
 		this.list = tempList;
 
-		console.log("selected",this.list[index].selected);
-		console.log("status",this.list[index].status);
+		// console.log("selected",this.list[index].selected);
+		// console.log("status",this.list[index].status);
 	}
 
 	//将编辑后的输入框的数据更新到数组
-	updateList(id: number, editValue: string, edit: boolean): void {
+	updateList(id: number, editValue: string, disabled: boolean): void {
 		const tempList = JSON.parse(JSON.stringify(toJS(this.list)));
-    const index = tempList.findIndex((item: IItem) => item.id === id);
+		const index = tempList.findIndex((item: IItem) => item.id === id);
+		
 		tempList[index].listValue = editValue;
-		tempList[index].unEdit = edit;
+		tempList[index].unEdit = disabled;
 		this.list = tempList;
 	}
 
@@ -117,7 +118,7 @@ class TodoStore {
 	@action.bound
 	changeStatus(status: string): void {
 		this.filterValue = status;
-		console.log('filterValue', this.filterValue);
+		// console.log('filterValue', this.filterValue);
 	}
 
 	//删除status==finished的数组元素

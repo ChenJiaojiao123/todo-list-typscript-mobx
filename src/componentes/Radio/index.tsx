@@ -1,5 +1,5 @@
 import React from 'react';
-//import '../../components/Radio/radio.css';
+import './style/index.css';
 
 interface IAppProps {
 	id: number;
