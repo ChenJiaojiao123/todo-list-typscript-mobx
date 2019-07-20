@@ -39,5 +39,6 @@
   },
   "devDependencies": {
     "react-app-rewired": "^2.1.3"
-  }
+  },
+  "homepage": "https://devcdn.xylink.com/miniProgram/todo/"
 }

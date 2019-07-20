@@ -28,8 +28,7 @@ interface IHomeState {
 // 	})
 // );
 
-@inject('todoStore')
-@observer
+
 class Home extends React.Component<IAppProps, IHomeState> {
 	constructor(props: IAppProps) {
 		super(props);
@@ -46,7 +45,6 @@ class Home extends React.Component<IAppProps, IHomeState> {
 	render() {
 		return (
 			<div>
-				<div>{this.props.todoStore.list}</div>
         <div>{ this.state.loading ? "loading..." : "" }</div>
         {/* <div>{ this.props.history }</div> */}
 			</div>

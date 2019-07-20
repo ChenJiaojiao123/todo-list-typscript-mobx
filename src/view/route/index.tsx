@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Route, Link } from "react-router-dom";
 import Home from '../index/index';
 
 import Mobx from '../mobx/index';
@@ -21,7 +21,6 @@ class App extends React.Component{
 				</ul>
 						
 				<Route path="/" exact component={ Home } />
-				{/* <Route path="/new" component={New} /> */}
 				<Route path="/mobx" component={Mobx} />
 			</Router>
 		);

@@ -14,20 +14,20 @@ interface IAppProps {
 	id?: number;
 }
 
-interface IInputState {
-	value: string;
-	defaultValue: string;
-	placeholder: string;
-	type: string;
-	isClearInput: boolean;
-	className: string;
-	disabled: boolean;
+interface IInputState extends INewProps {
 	id: number;
 	cacheValue: string;
 }
 
-// type TKey = "value" | "defaultValue" | "placeholder" | "type";
-type TKey = string;
+interface INewProps {
+	disabled: boolean;
+	value: string;
+	defaultValue: string;
+	className: string;
+	type: string;
+	isClearInput: boolean;
+	placeholder: string;
+}
 
 class Input extends React.Component<IAppProps, IInputState> {
 	constructor(props: IAppProps) {
@@ -68,13 +68,17 @@ class Input extends React.Component<IAppProps, IInputState> {
 			placeholder = ''
 		} = this.props;
 
-		this.resetStateFormProps(preProps, 'className', className);
-		this.resetStateFormProps(preProps, 'isClearInput', isClearInput);
-		this.resetStateFormProps(preProps, 'placeholder', placeholder);
-		this.resetStateFormProps(preProps, 'type', type);
-		this.resetStateFormProps(preProps, 'disabled', disabled);
-		this.resetStateFormProps(preProps, 'defaultValue', defaultValue);
-		this.resetStateFormProps(preProps, 'value', value);
+		const obj: INewProps = { disabled, value, defaultValue, className, type, isClearInput, placeholder };
+
+		this.updateStateFromProps(preProps, obj);
+
+		// this.resetStateFormProps(preProps, 'className', className);
+		// this.resetStateFormProps(preProps, 'isClearInput', isClearInput);
+		// this.resetStateFormProps(preProps, 'placeholder', placeholder);
+		// this.resetStateFormProps(preProps, 'type', type);
+		// this.resetStateFormProps(preProps, 'disabled', disabled);
+		// this.resetStateFormProps(preProps, 'defaultValue', defaultValue);
+		// this.resetStateFormProps(preProps, 'value', value);
 	}
 
 	private resetStateFormProps(preProps: IAppProps, key: string, value: any) {
@@ -82,6 +86,12 @@ class Input extends React.Component<IAppProps, IInputState> {
 			this.setState({
 				[key]: value
 			} as Pick<IInputState, keyof IInputState>);
+		}
+	}
+
+	private updateStateFromProps(preProps: IAppProps, param: INewProps) {
+		for (let key in param) {
+			this.resetStateFormProps(preProps, key, param[key]);
 		}
 	}
 
